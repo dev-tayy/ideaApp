@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ideaApp/screens/createAccount_screen.dart';
-import '../components/modal_bottom_sheet.dart';
+import '../widgets/modal_bottom_sheet.dart';
 import '../constants.dart';
+import '../widgets/raised_button.dart';
+import '../widgets/auth_button.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../widgets/textfield_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   static String id = 'login_screen';
@@ -14,13 +18,7 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Sign in',
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text('Sign in', style: kScreenTitleStyle),
             SizedBox(height: 50.0),
             Row(
               children: [
@@ -45,44 +43,14 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 40.0),
-            TextField(
-              showCursor: false,
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              style: TextStyle(fontSize: 20, color: Colors.black),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                focusColor: Colors.white,
-                hintText: 'Email',
-                hintStyle: TextStyle(fontSize: 20, color: Colors.grey.shade400),
-                border: OutlineInputBorder(),
-                errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red, width: 0.0)),
-                focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.lightBlueAccent, width: 2.0)),
-              ),
+            FormTextField(
+              hintText: 'Username',
+              obscureText: false,
             ),
             SizedBox(height: 20.0),
-            TextField(
-              showCursor: false,
-              autocorrect: false,
-              style: TextStyle(fontSize: 20, color: Colors.black),
+            FormTextField(
+              hintText: 'Password',
               obscureText: true,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  focusColor: Colors.white,
-                  hintText: 'Password',
-                  hintStyle:
-                      TextStyle(fontSize: 20, color: Colors.grey.shade400),
-                  border: OutlineInputBorder(),
-                  errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red, width: 0.0)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Colors.lightBlueAccent, width: 2.0))),
             ),
             Center(
               child: Padding(
@@ -96,48 +64,16 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                RaisedButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  padding:
-                      EdgeInsets.symmetric(vertical: 17.0, horizontal: 30.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.g_translate,
-                        color: Colors.red,
-                      ),
-                      SizedBox(width: 15.0),
-                      Text(
-                        'Google',
-                        style: TextStyle(fontSize: 25, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-                RaisedButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  padding:
-                      EdgeInsets.symmetric(vertical: 17.0, horizontal: 30.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.g_translate,
-                        color: Colors.blue,
-                      ),
-                      SizedBox(width: 15.0),
-                      Text(
-                        'Facebook',
-                        style: TextStyle(fontSize: 25, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
+                AuthButton(
+                    onPressed: () {},
+                    label: 'Google',
+                    icon: FontAwesomeIcons.google,
+                    color: Colors.red),
+                AuthButton(
+                    onPressed: () {},
+                    label: 'Facebook',
+                    icon: FontAwesomeIcons.facebook,
+                    color: Colors.blue),
               ],
             ),
             SizedBox(height: 30),
@@ -156,23 +92,12 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             Container(
-              alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.only(top: 350, bottom: 20),
-              child: RaisedButton(
-                  onPressed: () {
-                    //Navigator.pushReplacementNamed(context, LoginScreen.id);
-                  },
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 45.0, vertical: 20.0),
-                    child: Text(
-                      "Log in",
-                      style: TextStyle(fontSize: 20.0),
-                    ),
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0))),
-            ),
+                alignment: Alignment.bottomCenter,
+                padding: EdgeInsets.only(top: 350, bottom: 20),
+                child: ButtonWidget(
+                    onPressed: () =>
+                        Navigator.pushReplacementNamed(context, LoginScreen.id),
+                    label: 'Log in')),
             Center(
               child: InkWell(
                 onTap: () => buildShowModalBottomSheet(context),

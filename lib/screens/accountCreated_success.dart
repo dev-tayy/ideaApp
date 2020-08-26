@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import '../widgets/raised_button.dart';
+import '../constants.dart';
 
 class AccountCreatedSuccess extends StatelessWidget {
   static String id = 'account_created_success';
@@ -16,12 +18,7 @@ class AccountCreatedSuccess extends StatelessWidget {
                 Icons.check_circle,
                 size: 200.0,
               ),
-              Text(
-                'Congratulations',
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
+              Text('Congratulations', style: kScreenTitleStyle),
               SizedBox(
                 height: 20.0,
                 child: Divider(
@@ -36,22 +33,11 @@ class AccountCreatedSuccess extends StatelessWidget {
                 style: TextStyle(fontSize: 22, height: 1.5),
               ),
               SizedBox(height: 20.0),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, LoginScreen.id);
-                },
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 45.0, vertical: 20.0),
-                  child: Text(
-                    "Log in to continue",
-                    style: TextStyle(fontSize: 20.0),
-                  ),
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-              )
+              ButtonWidget(
+                label: 'Log in to continue',
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, LoginScreen.id),
+              ),
             ],
           ),
         ),

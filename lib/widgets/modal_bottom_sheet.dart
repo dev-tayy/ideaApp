@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../screens/createAccount_screen.dart';
+import '../widgets/raised_button.dart';
 
 Future buildShowModalBottomSheet(BuildContext context) {
   return showModalBottomSheet(
@@ -36,19 +36,10 @@ Future buildShowModalBottomSheet(BuildContext context) {
               ),
               SizedBox(height: 25),
               Center(
-                child: RaisedButton(
-                    onPressed: () {},
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 45.0, vertical: 20.0),
-                      child: Text(
-                        "Yes, Continue",
-                        style: TextStyle(fontSize: 20.0),
-                      ),
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0))),
-              ),
+                  child: ButtonWidget(
+                label: 'Yes, Continue',
+                onPressed: () {},
+              )),
               SizedBox(height: 18),
               Center(
                 child: InkWell(
