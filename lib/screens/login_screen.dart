@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ideaApp/screens/createAccount_screen.dart';
+import '../components/modal_bottom_sheet.dart';
+import '../constants.dart';
 
 class LoginScreen extends StatelessWidget {
   static String id = 'login_screen';
@@ -8,8 +10,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding:
-            EdgeInsets.only(left: 20.0, right: 20.0, bottom: 50.0, top: 50.0),
+        padding: kScreenPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -174,11 +175,7 @@ class LoginScreen extends StatelessWidget {
             ),
             Center(
               child: InkWell(
-                // onTap: () => Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => CreateAccountScreen(),
-                //     )),
+                onTap: () => buildShowModalBottomSheet(context),
                 child: Text(
                   'Do it later',
                   style: TextStyle(

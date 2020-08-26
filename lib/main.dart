@@ -5,6 +5,7 @@ import 'screens/splash_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/createAccount_screen.dart';
+import 'screens/accountCreated_success.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         CreateAccountScreen.id: (context) => CreateAccountScreen(),
+        AccountCreatedSuccess.id: (context) => AccountCreatedSuccess(),
       },
     );
   }

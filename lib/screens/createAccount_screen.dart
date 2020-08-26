@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'accountCreated_success.dart';
+import '../components/modal_bottom_sheet.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../constants.dart';
 
 class CreateAccountScreen extends StatelessWidget {
   static String id = 'createAccount_screen';
@@ -8,18 +12,16 @@ class CreateAccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding:
-            EdgeInsets.only(left: 20.0, right: 20.0, bottom: 50.0, top: 50.0),
+        padding: kScreenPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Create new account',
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text('Create new account',
+                style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ))),
             SizedBox(height: 50.0),
             Row(
               children: [
@@ -151,13 +153,17 @@ class CreateAccountScreen extends StatelessWidget {
                   ),
                 ),
               ],
-            ), 
+            ),
             Container(
               alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.only(top: 350, bottom: 20),
+              padding: EdgeInsets.only(top: 300, bottom: 20),
               child: RaisedButton(
                   onPressed: () {
-                    //Navigator.pushReplacementNamed(context, LoginScreen.id);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AccountCreatedSuccess()),
+                    );
                   },
                   child: Padding(
                     padding:
@@ -172,11 +178,7 @@ class CreateAccountScreen extends StatelessWidget {
             ),
             Center(
               child: InkWell(
-                // onTap: () => Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => CreateAccountScreen(),
-                //     )),
+                onTap: () => buildShowModalBottomSheet(context),
                 child: Text(
                   'Do it later',
                   style: TextStyle(
