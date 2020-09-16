@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/raised_button.dart';
+import '../screens/homepage/homepage_screen.dart';
 
 Future buildShowModalBottomSheet(BuildContext context) {
   return showModalBottomSheet(
@@ -36,10 +37,13 @@ Future buildShowModalBottomSheet(BuildContext context) {
               ),
               SizedBox(height: 25),
               Center(
-                  child: ButtonWidget(
-                label: 'Yes, Continue',
-                onPressed: () {},
-              )),
+                child: ButtonWidget(
+                  label: 'Yes, Continue',
+                  onPressed: () {
+                    Navigator.pushNamed(context, HomePage.id);
+                  },
+                ),
+              ),
               SizedBox(height: 18),
               Center(
                 child: InkWell(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'login_screen.dart';
+import 'login/login_screen.dart';
 import '../constants.dart';
 import '../widgets/raised_button.dart';
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "327240945644",
+    "firebase_url": "https://ideaapp-f9491.firebaseio.com",
+    "project_id": "ideaapp-f9491",
+    "storage_bucket": "ideaapp-f9491.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327240945644:android:9ff7871d5be52ad9817ac9",
+        "android_client_info": {
+          "package_name": "com.example.ideaApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "327240945644-41h8le99835t2i53dobru9np6l31lbor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSaS-WJK7xQCTxG0TcyUf8FpNvpn3dp74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "327240945644-41h8le99835t2i53dobru9np6l31lbor.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

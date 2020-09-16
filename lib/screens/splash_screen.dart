@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'welcome_screen.dart';
-
+import '../services/shared_pref.dart';
+import '../screens/homepage/homepage_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   static String id = 'splash_screen';
@@ -34,9 +36,15 @@ class _SplashScreenState extends State<SplashScreen>
       setState(() {});
     });
 
-    animationController.addStatusListener((status) {
+    animationController.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
-        Navigator.pushReplacementNamed(context, WelcomeScreen.id);
+        SharedPreferences sharedPreferences =
+            await SharedPreferences.getInstance();
+        var email = sharedPreferences.getString(SharedPref.emailKey);
+        print(email);
+        email == null
+            ? Navigator.pushReplacementNamed(context, WelcomeScreen.id)
+            : Navigator.pushReplacementNamed(context, HomePage.id);
       }
     });
   }
