@@ -11,6 +11,7 @@ class Db {
         .where('username', isEqualTo: email)
         .get();
   }
+  
 
   uploadDocuments(userMap) {
     firestore

@@ -10,6 +10,7 @@ import 'screens/createAccount/createAccount_screen.dart';
 import 'screens/createAccount/accountCreated_success.dart';
 import 'screens/homepage/homepage_screen.dart';
 import './services/provider.dart';
+import './screens/homepage/idea_posts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         CreateAccountScreen.id: (context) => CreateAccountScreen(),
         AccountCreatedSuccess.id: (context) => AccountCreatedSuccess(),
         HomePage.id: (context) => HomePage(),
+        IdeaPosts.id: (context) => HomePage(),
       },
     );
   }

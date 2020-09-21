@@ -6,7 +6,7 @@ import '../../services/auth/auth_exception_handler.dart';
 import '../../widgets/snackbar.dart';
 import '../../screens/createAccount/accountCreated_success.dart';
 import '../../services/db.dart';
-
+//import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpModel extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -27,6 +27,8 @@ class SignUpModel extends ChangeNotifier {
       email: emailController.text.trim(),
       password: passwordController.text,
     );
+
+  
 
     Future.delayed(Duration(seconds: 1), () {
       progress.dismiss();
