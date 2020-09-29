@@ -53,6 +53,8 @@ class ProfileScreen extends StatelessWidget {
           return popUpList;
         },
         onSelected: _onSelect,
+        tooltip: 'Change your theme mode and/or Logout here',
+        elevation: 2.0,
       );
     }
 
