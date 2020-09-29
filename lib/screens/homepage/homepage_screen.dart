@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'home_page';
-  final String username;
-  const HomePage({Key key, this.username}) : super(key: key);
+  
+  const HomePage({Key key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();

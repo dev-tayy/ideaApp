@@ -6,12 +6,14 @@ class FormTextField extends StatelessWidget {
       this.obscureText,
       this.keyboardType,
       this.suffixIcon,
+      this.maxLines,
       @required this.controller,
-      @required this.validator});
+      this.validator});
   final String hintText;
   final bool obscureText;
   final Widget suffixIcon;
   final TextInputType keyboardType;
+  final int maxLines;
 
   final TextEditingController controller;
   final FormFieldValidator<String> validator;
@@ -24,6 +26,7 @@ class FormTextField extends StatelessWidget {
       textCapitalization: TextCapitalization.none,
       autocorrect: false,
       keyboardType: keyboardType,
+      maxLines: maxLines,
       obscureText: obscureText,
       style: TextStyle(fontSize: 20, color: Colors.black),
       decoration: InputDecoration(

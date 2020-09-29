@@ -32,11 +32,7 @@ class LoginModel extends ChangeNotifier {
 
     if (user == AuthResultStatus.successful) {
       SharedPref.saveEmail(emailController.text);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return HomePage(
-          username: username,
-        );
-      }));
+      Navigator.pushReplacementNamed(context, HomePage.id);
     } else {
       final errorMsg = AuthExceptionHandler.generateExceptionMessage(user);
       IdeaAppSnackBar.showErrorSnackBar(context, message: errorMsg);
