@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../../widgets/slidable_container.dart';
+import '../homepage/signoutmodel.dart';
+import 'package:provider/provider.dart';
+
+enum PopUpValue { darkMode, signOut }
 
 class ProfileScreen extends StatelessWidget {
   static String id = 'profile_screen';
@@ -8,6 +12,50 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var model = Provider.of<SignOutModel>(context);
+
+    _onSelect(PopUpValue value) async {
+      switch (value) {
+        case PopUpValue.darkMode:
+          // ignore: unnecessary_statements
+          null;
+          break;
+        case PopUpValue.signOut:
+          await model.signout(context);
+      }
+    }
+
+    PopupMenuButton buildPopupMenuButton() {
+      return PopupMenuButton<PopUpValue>(
+        itemBuilder: (BuildContext context) {
+          var popUpList = List<PopupMenuEntry<PopUpValue>>();
+          popUpList.add(
+            PopupMenuItem(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Dark Mode"),
+                  Switch(
+                      activeColor: Colors.deepOrange,
+                      value: false,
+                      onChanged: (boolVal) {}),
+                ],
+              ),
+              value: PopUpValue.darkMode,
+            ),
+          );
+          popUpList.add(
+            PopupMenuItem(
+              child: Text("Logout"),
+              value: PopUpValue.signOut,
+            ),
+          );
+          return popUpList;
+        },
+        onSelected: _onSelect,
+      );
+    }
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -19,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                 '@username',
                 style: kScreenTitleStyle,
               ),
-              Icon(Icons.more_vert)
+              buildPopupMenuButton()
             ],
           ),
           bottom: TabBar(
@@ -39,7 +87,7 @@ class ProfileScreen extends StatelessWidget {
               SlidableContainer(),
               SizedBox(height: 10.0),
               SlidableContainer(),
-               SizedBox(height: 10.0),
+              SizedBox(height: 10.0),
             ]),
           )
         ]),

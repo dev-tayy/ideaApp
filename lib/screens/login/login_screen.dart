@@ -79,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         hintText: 'Password',
                         obscureText: _showPassword,
                         controller: model.passwordController,
+                        maxLines: 1,
                         suffixIcon: GestureDetector(
                             onTap: () {
                               setState(() {

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/slidable_container.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
-import '../homepage/signoutmodel.dart';
-import 'package:provider/provider.dart';
 
 class IdeaPosts extends StatelessWidget {
   static String id = 'idea_posts';
@@ -13,7 +11,6 @@ class IdeaPosts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var model = Provider.of<SignOutModel>(context);
     return SafeArea(
       child: ProgressHUD(
         child: Builder(
@@ -48,9 +45,7 @@ class IdeaPosts extends StatelessWidget {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () async {
-                                await model.signout(context);
-                              },
+                              onTap: () async {},
                               child: Icon(
                                 Icons.close,
                                 size: 25,
@@ -62,13 +57,13 @@ class IdeaPosts extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10.0),
-                  SlidableContainer(), //username: widget.username),
+                  SlidableContainer(),
                   SizedBox(height: 10.0),
-                  SlidableContainer(), //username: widget.username),
+                  SlidableContainer(),
                   SizedBox(height: 10.0),
-                  SlidableContainer(), //username: widget.username),
+                  SlidableContainer(),
                   SizedBox(height: 10.0),
-                  SlidableContainer(), //username: widget.username),
+                  SlidableContainer(),
                   SizedBox(height: 10.0),
                 ],
               ),
