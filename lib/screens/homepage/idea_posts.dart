@@ -5,8 +5,9 @@ import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 
 class IdeaPosts extends StatelessWidget {
   static String id = 'idea_posts';
+  final String username;
   const IdeaPosts({
-    Key key,
+    Key key, this.username
   }) : super(key: key);
 
   @override
@@ -57,13 +58,13 @@ class IdeaPosts extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10.0),
-                  SlidableContainer(),
+                  SlidableContainer(username: '$username',),
                   SizedBox(height: 10.0),
-                  SlidableContainer(),
+                  SlidableContainer(username: '$username',),
                   SizedBox(height: 10.0),
-                  SlidableContainer(),
+                  SlidableContainer(username: '$username',),
                   SizedBox(height: 10.0),
-                  SlidableContainer(),
+                  SlidableContainer(username: '$username',),
                   SizedBox(height: 10.0),
                 ],
               ),

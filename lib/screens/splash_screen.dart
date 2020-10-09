@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen>
       if (status == AnimationStatus.completed) {
         SharedPreferences sharedPreferences =
             await SharedPreferences.getInstance();
-        var email = sharedPreferences.getString(SharedPref.emailKey);
+        String email = sharedPreferences.getString(SharedPref.emailKey);
         print(email);
         email == null
             ? Navigator.pushReplacementNamed(context, WelcomeScreen.id)

@@ -12,6 +12,7 @@ class SignOutModel extends ChangeNotifier {
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.remove(SharedPref.emailKey);
+    sharedPreferences.remove(SharedPref.usernameKey);
 
     // Future.delayed(Duration(seconds: 3), () {
     //   progress.dismiss();
@@ -20,7 +21,7 @@ class SignOutModel extends ChangeNotifier {
     await AuthenticationService().logout();
 
     Navigator.pushReplacementNamed(context, LoginScreen.id);
-    
+
     notifyListeners();
   }
 }

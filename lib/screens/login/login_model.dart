@@ -8,11 +8,15 @@ import '../../widgets/snackbar.dart';
 import '../../services/shared_pref.dart';
 import '../../screens/homepage/homepage_screen.dart';
 import '../../services/db.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
+FirebaseAuth _auth = FirebaseAuth.instance;
+Db db = Db();
 
 class LoginModel extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  Db db = Db();
 
   login(BuildContext context) async {
     final progress = ProgressHUD.of(context);
@@ -23,16 +27,26 @@ class LoginModel extends ChangeNotifier {
       password: passwordController.text,
     );
 
-    var username = await db.getUserByUsername(emailController.text);
-    print(username);
-
     Future.delayed(Duration(seconds: 1), () {
       progress.dismiss();
     });
 
     if (user == AuthResultStatus.successful) {
+      var username = await db.firestore
+          .collection('users')
+          .doc(_auth.currentUser.uid)
+          .get()
+          .then((value) {
+        // print(value.data()['username']);
+        return (value.data()['username']);
+      });
       SharedPref.saveEmail(emailController.text);
-      Navigator.pushReplacementNamed(context, HomePage.id);
+      SharedPref.saveUsername(username);
+
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomePage(username: username)));
     } else {
       final errorMsg = AuthExceptionHandler.generateExceptionMessage(user);
       IdeaAppSnackBar.showErrorSnackBar(context, message: errorMsg);

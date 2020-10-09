@@ -4,10 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SlidableContainer extends StatefulWidget {
- // final String username;
+  final String username;
   const SlidableContainer({
     Key key,
-   // @required this.username,
+    @required this.username,
   }) : super(key: key);
 
   @override
@@ -86,7 +86,7 @@ class _SlidableContainerState extends State<SlidableContainer> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '@username',
+                    '@${widget.username}',
                     style: GoogleFonts.montserrat(
                       textStyle: TextStyle(
                         fontSize: 25.0,

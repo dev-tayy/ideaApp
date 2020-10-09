@@ -1,4 +1,8 @@
+//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ideaApp/services/db.dart';
 import '../login/login_screen.dart';
 import '../../widgets/modal_bottom_sheet.dart';
 import '../../widgets/raised_button.dart';
@@ -9,6 +13,9 @@ import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:provider/provider.dart';
 import 'createAccount_model.dart';
 
+//FirebaseAuth _auth = FirebaseAuth.instance;
+FirebaseFirestore firestore = FirebaseFirestore.instance;
+Db db = Db();
 
 class CreateAccountScreen extends StatefulWidget {
   static String id = 'createAccount_screen';
@@ -92,6 +99,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       SizedBox(height: 20.0),
                       FormTextField(
                         hintText: 'Password',
+                        maxLines: 1,
                         obscureText: _showPassword,
                         controller: model.passwordController,
                         suffixIcon: GestureDetector(
@@ -128,9 +136,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                       listen: false)
                                   .signUp(context);
                             }
-                            model.emailController.text = '';
+
                             model.passwordController.text = '';
-                            model.usernameController.text = '';
                           },
                         ),
                       ),

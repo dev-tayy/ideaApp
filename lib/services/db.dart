@@ -5,13 +5,7 @@ FirebaseAuth _auth = FirebaseAuth.instance;
 
 class Db {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  getUserByUsername(String email) async {
-    return await firestore
-        .collection("users")
-        .where('username', isEqualTo: email)
-        .get();
-  }
-  
+ 
 
   uploadDocuments(userMap) {
     firestore

@@ -8,7 +8,8 @@ enum PopUpValue { darkMode, signOut }
 
 class ProfileScreen extends StatelessWidget {
   static String id = 'profile_screen';
-  const ProfileScreen({Key key}) : super(key: key);
+  final String username;
+  const ProfileScreen({Key key, this.username}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '@username',
+                '@$username',
                 style: kScreenTitleStyle,
               ),
               buildPopupMenuButton()
@@ -84,11 +85,11 @@ class ProfileScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
             child: Column(children: [
-              SlidableContainer(),
+              SlidableContainer(username: 'username',),
               SizedBox(height: 10.0),
-              SlidableContainer(),
+              SlidableContainer(username: 'username',),
               SizedBox(height: 10.0),
-              SlidableContainer(),
+              SlidableContainer(username: 'username',),
               SizedBox(height: 10.0),
             ]),
           )

@@ -63,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       FormTextField(
                         hintText: 'Email',
                         obscureText: false,
+                        keyboardType: TextInputType.emailAddress,
                         controller: model.emailController,
                         validator: (value) {
                           LoginValidation loginValidation = LoginValidation();
@@ -102,30 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           return null;
                         },
                       ),
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 30.0),
-                          child: Text(
-                            'OR CONTINUE WITH',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          AuthButton(
-                              onPressed: () {},
-                              label: 'Google',
-                              icon: FontAwesomeIcons.google,
-                              color: Colors.red),
-                          AuthButton(
-                              onPressed: () {},
-                              label: 'Facebook',
-                              icon: FontAwesomeIcons.facebook,
-                              color: Colors.blue),
-                        ],
-                      ),
+                     
+                      
                       SizedBox(height: 30),
                       InkWell(
                         // onTap: () => Navigator.push(
