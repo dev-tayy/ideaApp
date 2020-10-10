@@ -5,10 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SlidableContainer extends StatefulWidget {
   final String username;
-  const SlidableContainer({
-    Key key,
-    @required this.username,
-  }) : super(key: key);
+  //final String ideaTitle;
+  //final String ideaText;
+  const SlidableContainer(
+      {Key key, this.username})
+      : super(key: key);
 
   @override
   _SlidableContainerState createState() => _SlidableContainerState();
@@ -18,6 +19,7 @@ class _SlidableContainerState extends State<SlidableContainer> {
   bool onTapHeartIcon = false;
   bool onTapBookmarkIcon = false;
   bool onTapContainer = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +104,7 @@ class _SlidableContainerState extends State<SlidableContainer> {
               ),
               SizedBox(height: 5.0),
               Text(
-                'Lorem ipsum dolor',
+                'ideaTitle',
                 style: GoogleFonts.montserrat(
                   textStyle: TextStyle(
                     fontSize: 23.0,
@@ -111,7 +113,7 @@ class _SlidableContainerState extends State<SlidableContainer> {
                 ),
               ),
               Text(
-                "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?",
+                'ideaText',
                 style: GoogleFonts.montserrat(
                   textStyle: TextStyle(
                       fontSize: 19.0, height: 1.5, fontWeight: FontWeight.w200),

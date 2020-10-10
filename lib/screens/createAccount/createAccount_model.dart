@@ -43,7 +43,7 @@ class SignUpModel extends ChangeNotifier {
       print(checkUsername);
       if (checkUsername == false) {
         if (newUser == AuthResultStatus.successful) {
-          db.uploadDocuments(userCredentials);
+          db.uploadUserCredentials(userCredentials);
           Navigator.popAndPushNamed(context, AccountCreatedSuccess.id);
         } else {
           final errorMsg =

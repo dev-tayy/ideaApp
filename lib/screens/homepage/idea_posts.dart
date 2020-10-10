@@ -62,7 +62,7 @@ class IdeaPosts extends StatelessWidget {
                   SizedBox(height: 10.0),
                   SlidableContainer(username: '$username',),
                   SizedBox(height: 10.0),
-                  SlidableContainer(username: '$username',),
+                  SlidableContainer(username: '$username', ),
                   SizedBox(height: 10.0),
                   SlidableContainer(username: '$username',),
                   SizedBox(height: 10.0),

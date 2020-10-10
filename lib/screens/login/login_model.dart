@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import '../../services/auth/authentication_service.dart';
 import '../../services/auth/auth_exception_handler.dart';
@@ -9,7 +7,6 @@ import '../../services/shared_pref.dart';
 import '../../screens/homepage/homepage_screen.dart';
 import '../../services/db.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 
 FirebaseAuth _auth = FirebaseAuth.instance;
 Db db = Db();

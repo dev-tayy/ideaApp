@@ -4,8 +4,6 @@ import 'package:ideaApp/screens/createAccount/createAccount_screen.dart';
 import '../../widgets/modal_bottom_sheet.dart';
 import '../../constants.dart';
 import '../../widgets/raised_button.dart';
-import '../../widgets/auth_button.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../widgets/textfield_widget.dart';
 import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import 'package:provider/provider.dart';

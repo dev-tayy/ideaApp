@@ -10,4 +10,5 @@ final providers = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => SignOutModel()),
   ChangeNotifierProvider(create: (_) => LoginModel()),
   ChangeNotifierProvider(create: (_) => AppModel()),
+
 ];

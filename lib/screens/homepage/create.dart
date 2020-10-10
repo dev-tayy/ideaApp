@@ -3,6 +3,8 @@ import '../../constants.dart';
 import '../../widgets/textfield_widget.dart';
 import '../../widgets/raised_button.dart';
 import '../homepage/homepage_screen.dart';
+import 'appmodel.dart';
+import 'package:provider/provider.dart';
 
 class CreateScreen extends StatefulWidget {
   static String id = 'create_screen';
@@ -13,11 +15,9 @@ class CreateScreen extends StatefulWidget {
 }
 
 class _CreateScreenState extends State<CreateScreen> {
-  TextEditingController ideaNameController = TextEditingController();
-  TextEditingController ideaController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    var model = Provider.of<AppModel>(context);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -72,13 +72,13 @@ class _CreateScreenState extends State<CreateScreen> {
                 SizedBox(height: 30),
                 FormTextField(
                   hintText: 'Name your idea',
-                  controller: ideaNameController,
+                  controller: model.ideaTitleController,
                   obscureText: false,
                 ),
                 SizedBox(height: 10.0),
                 FormTextField(
                   hintText: 'Write a short description',
-                  controller: ideaController,
+                  controller: model.ideaTextController,
                   obscureText: false,
                   maxLines: 10,
                   keyboardType: TextInputType.multiline,
@@ -106,7 +106,10 @@ class _CreateScreenState extends State<CreateScreen> {
                 Center(
                   child: Padding(
                     padding: EdgeInsets.only(top: 40.0),
-                    child: ButtonWidget(onPressed: null, label: 'Create'),
+                    child: ButtonWidget(
+                      onPressed: () => model.postIdea(),
+                      label: 'Create',
+                    ),
                   ),
                 ),
                 SizedBox(height: 20.0),
