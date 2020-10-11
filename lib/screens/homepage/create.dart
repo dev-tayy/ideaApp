@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 import '../../constants.dart';
 import '../../widgets/textfield_widget.dart';
 import '../../widgets/raised_button.dart';
@@ -21,111 +22,115 @@ class _CreateScreenState extends State<CreateScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 30.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'New idea',
-                  style: kScreenTitleStyle,
+        child: ProgressHUD(
+          child: Builder(
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                  vertical: 30.0,
                 ),
-                SizedBox(height: 30),
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF303030),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'New idea',
+                      style: kScreenTitleStyle,
+                    ),
+                    SizedBox(height: 30),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF303030),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(Icons.border_color),
+                          Row(
+                            children: [
+                              Icon(Icons.border_color),
+                              SizedBox(width: 10),
+                              Text(
+                                'Draft',
+                                style: kButtonTextStyle,
+                              ),
+                            ],
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, color: Colors.red),
+                            child: Center(child: Text('1')),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    Center(
+                      child: Text('OR CREATE NEW'),
+                    ),
+                    SizedBox(height: 30),
+                    FormTextField(
+                      hintText: 'Name your idea',
+                      controller: model.ideaTitleController,
+                      obscureText: false,
+                    ),
+                    SizedBox(height: 10.0),
+                    FormTextField(
+                      hintText: 'Write a short description',
+                      controller: model.ideaTextController,
+                      obscureText: false,
+                      maxLines: 10,
+                      keyboardType: TextInputType.multiline,
+                    ),
+                    SizedBox(height: 30),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF303030),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      width: double.infinity,
+                      child: Row(
+                        children: [
+                          Icon(Icons.attach_file),
                           SizedBox(width: 10),
                           Text(
-                            'Draft',
+                            'Add files',
                             style: kButtonTextStyle,
                           ),
                         ],
                       ),
-                      Container(
-                        padding: EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.red),
-                        child: Center(child: Text('1')),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(height: 30),
-                Center(
-                  child: Text('OR CREATE NEW'),
-                ),
-                SizedBox(height: 30),
-                FormTextField(
-                  hintText: 'Name your idea',
-                  controller: model.ideaTitleController,
-                  obscureText: false,
-                ),
-                SizedBox(height: 10.0),
-                FormTextField(
-                  hintText: 'Write a short description',
-                  controller: model.ideaTextController,
-                  obscureText: false,
-                  maxLines: 10,
-                  keyboardType: TextInputType.multiline,
-                ),
-                SizedBox(height: 30),
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF303030),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  width: double.infinity,
-                  child: Row(
-                    children: [
-                      Icon(Icons.attach_file),
-                      SizedBox(width: 10),
-                      Text(
-                        'Add files',
-                        style: kButtonTextStyle,
-                      ),
-                    ],
-                  ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 40.0),
-                    child: ButtonWidget(
-                      onPressed: () => model.postIdea(),
-                      label: 'Create',
                     ),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                Center(
-                  child: InkWell(
-                    onTap: () => Navigator.pushNamed(context, HomePage.id),
-                    child: Text(
-                      'Do it later',
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.lightBlueAccent,
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 40.0),
+                        child: ButtonWidget(
+                          onPressed: () => model.postIdea(context),
+                          label: 'Create',
+                        ),
                       ),
                     ),
-                  ),
+                    SizedBox(height: 20.0),
+                    Center(
+                      child: InkWell(
+                        onTap: () => Navigator.pushNamed(context, HomePage.id),
+                        child: Text(
+                          'Do it later',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.lightBlueAccent,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
