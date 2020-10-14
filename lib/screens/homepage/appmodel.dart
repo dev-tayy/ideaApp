@@ -30,7 +30,7 @@ class AppModel extends ChangeNotifier {
     };
     db.uploadUserPosts(userPosts);
 
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(Duration(seconds: 2), () {
       progress.showWithText('Posted');
       progress.dismiss();
     });

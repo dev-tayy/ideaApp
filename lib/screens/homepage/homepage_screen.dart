@@ -7,7 +7,6 @@ import '../homepage/create.dart';
 import '../homepage/profile.dart';
 import 'package:provider/provider.dart';
 
-
 class HomePage extends StatefulWidget {
   static String id = 'home_page';
   final String username;
@@ -24,11 +23,6 @@ class _HomePageState extends State<HomePage> {
     var username = sharedPreferences.getString(SharedPref.usernameKey);
     //print(username);
     return username;
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
@@ -59,9 +53,7 @@ class _HomePageState extends State<HomePage> {
             ),
             body: IndexedStack(
               children: [
-                IdeaPosts(
-                  username: snapshot.data,
-                ),
+                IdeaPosts(),
                 CreateScreen(),
                 ProfileScreen(
                   username: snapshot.data,
